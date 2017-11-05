@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+  <!--  open Etudiant List -->
+  <act_window id="action_etudiant_save"
+    name="Etudiant"
+    res_model="daniel_school.etudiant"
+    view_mode="tree,form" />
+  <!-- base munu item  -->
+  <!-- parent="mail.mail_feeds" -->
+
+  <menuitem id="base_menu" name="Daniel_School"/>
+  <!-- Menu item to open etudiants list -->
+  <menuitem id="menu_etudiant"
+    name="Gestion Etudiant"
+    parent="base_menu"/>
+
+    <menuitem id="menu_todo_task"
+      name="Etudiant"
+      parent="menu_etudiant"
+      sequence="20"
+      action="action_etudiant_save" />
+  </data>
+</openerp>
