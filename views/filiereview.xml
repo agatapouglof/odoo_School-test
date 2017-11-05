@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+  <!--  open Etudiant List -->
+  <!-- <act_window id="action_etudiant_save"
+    name="Etudiant"
+    res_model="daniel_school.etudiant"
+    view_mode="tree,form" /> -->
+    <!-- vue up to down  -->
+    <record model="ir.ui.view" id="session_form_view">
+        <field name="name">filiere.form</field>
+        <field name="model">daniel_school.filiere</field>
+        <field name="arch" type="xml">
+            <form string="Session Form">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="description"/>
+                        <!-- <field name="duration"/> -->
+                        <!-- <field name="seats"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_filiere_save">
+        <field name="name">Filieres</field>
+        <field name="res_model">daniel_school.filiere</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Creer La Premiere Filire
+            </p>
+        </field>
+    </record>
+  <!-- base menu item  -->
+  <!-- <menuitem id="base_menu" name="Daniel_School"/> -->
+  <!-- Menu item to open etudiants list -->
+  <menuitem id="menu_filiere_haut"
+    name="Gestion Filiere"
+    parent="base_menu"/>
+
+    <menuitem id="menu_filiere"
+      name="Filiere"
+      parent="menu_filiere_haut"
+      sequence="20"
+      action="action_filiere_save" />
+  </data>
+</openerp>
