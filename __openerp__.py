@@ -5,5 +5,10 @@
 'depends': ['mail','base'],
 'application': True,
 'summary':"Module Pour la gestion Des etudiants et profs d'une grande ecole",
-'data': ['views/etudiantview.xml','views/filiereview.xml','views/profview.xml'],
+'data': [
+    'views/etudiantview.xml',
+    'views/filiereview.xml',
+    'views/profview.xml',
+    'views/matiereview.xml'
+    ],
 }

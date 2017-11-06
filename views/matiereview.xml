@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+    <!-- tree view -->
+    <record model="ir.ui.view" id="matiere_tree">
+      <field name="name">matiere.tree</field>
+      <field name="model">daniel_school.matiere</field>
+      <field name="arch" type="xml">
+            <tree string="Liste matiere">
+                  <field name="nom"/>
+                  <field name="description"/>
+            </tree>
+      </field>
+
+    </record>
+    <!-- form view  -->
+    <record model="ir.ui.view" id="session_form_view">
+        <field name="name">matiere.form</field>
+        <field name="model">daniel_school.matiere</field>
+        <field name="arch" type="xml">
+            <form string="Session Form">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="description"/>
+                        <!-- <field name="duration"/> -->
+                        <!-- <field name="seats"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_matiere_save">
+        <field name="name">matiere</field>
+        <field name="res_model">daniel_school.matiere</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Creer La Premiere Matiere
+            </p>
+        </field>
+    </record>
+  <!-- base menu item  -->
+  <!-- <menuitem id="base_menu" name="Daniel_School"/> -->
+  <!-- Menu item to open etudiants list -->
+  <menuitem id="menu_matiere_haut"
+    name="Gestion matieres"
+    parent="base_menu"/>
+
+    <menuitem id="menu_matiere"
+      name="matiere"
+      parent="menu_matiere_haut"
+      sequence="20"
+      action="action_matiere_save" />
+  </data>
+</openerp>
