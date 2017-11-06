@@ -7,15 +7,17 @@
     res_model="daniel_school.etudiant"
     view_mode="tree,form" /> -->
     <!-- vue up to down  -->
-    <record model="ir.ui.view" id="session_form_view">
+    <record model="ir.ui.view" id="etudiant_form_view">
         <field name="name">etudiant.form</field>
         <field name="model">daniel_school.etudiant</field>
         <field name="arch" type="xml">
             <form string="Session Form">
                 <sheet>
                     <group>
+                        <field name="image" widget="image"/>
                         <field name="nom"/>
                         <field name="prenoms"/>
+                        <field name="filiere_id"/>
                         <!-- <field name="duration"/> -->
                         <!-- <field name="seats"/> -->
                     </group>

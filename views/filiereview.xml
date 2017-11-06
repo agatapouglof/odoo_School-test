@@ -1,17 +1,23 @@
 <?xml version="1.0"?>
 <openerp>
   <data>
-  <!--  open Etudiant List -->
-  <!-- <act_window id="action_etudiant_save"
-    name="Etudiant"
-    res_model="daniel_school.etudiant"
-    view_mode="tree,form" /> -->
-    <!-- vue up to down  -->
-    <record model="ir.ui.view" id="session_form_view">
-        <field name="name">filiere.form</field>
+    <!--tree  -->
+    <record model="ir.ui.view" id="filiere_tree">
+      <field name="name">filiere.tree</field>
+      <field name="model">daniel_school.filiere</field>
+      <field name="arch" type="xml">
+            <tree string="Filiere Liste">
+                  <field name="nom"/>
+                  <field name="description"/>
+            </tree>
+      </field>
+
+    </record>
+    <record model="ir.ui.view" id="filiere_form_view">
+        <field name="nom">filiere.form</field>
         <field name="model">daniel_school.filiere</field>
         <field name="arch" type="xml">
-            <form string="Session Form">
+            <form string="Filiere Form">
                 <sheet>
                     <group>
                         <field name="nom"/>
@@ -30,7 +36,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
-            <p class="oe_view_nocontent_create">Creer La Premiere Filire
+            <p class="oe_view_nocontent_create">Creer La Premiere Filiere
             </p>
         </field>
     </record>
