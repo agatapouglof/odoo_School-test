@@ -22,6 +22,7 @@
                     <group>
                         <field name="nom"/>
                         <field name="description"/>
+                        <field name="matiere_in_filiere_id" widget="many2many_tags"/>
                         <!-- <field name="duration"/> -->
                         <!-- <field name="seats"/> -->
                     </group>

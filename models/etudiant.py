@@ -6,8 +6,7 @@ class Etudiant(models.Model):
     prenoms = fields.Char(string='Prenoms  Etudiant', help="Entrez le((s) prenoms(s) de l\'etudiant",required=True)
     _rec_name = 'nom'
     image = fields.Binary('Photo')
-    # sexe = fields.selection((('M','Masculin'), ('F','Feminin')),'Sexe')
-    # sexe = fields.Selection([('a', 'A')])
+    sexe = fields.Selection((('M','Masculin'), ('F','Feminin')),'Sexe')
     age =  fields.Integer('Age')
     filiere_id = fields.Many2one('daniel_school.filiere',string='filiere')
     # is_done = fields.Boolean('Done?')

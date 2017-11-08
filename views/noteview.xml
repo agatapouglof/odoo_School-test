@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+    <!--tree  -->
+    <record model="ir.ui.view" id="note_tree">
+      <field name="name">note.tree</field>
+      <field name="model">daniel_school.note</field>
+      <field name="arch" type="xml">
+            <tree string="note Liste">
+                  <field name="nom"/>
+                  <!-- <field name="description"/> -->
+            </tree>
+      </field>
+
+    </record>
+    <record model="ir.ui.view" id="note_form_view">
+        <field name="nom">note.form</field>
+        <field name="model">daniel_school.note</field>
+        <field name="arch" type="xml">
+            <form string="note Form">
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <!-- <field name="description"/> -->
+                        <field name="filiere_in_note_id" />
+                        <field name="etudiant_in_note_id" domain="[('etudiant_in_note_id.filiere_id', '=', filiere_in_note_id)]"/>
+                        <!-- <field name="select_etudiant_in_filiere" domain="[('etudiant_in_note_id', '=', filiere_in_note_id)]" /> -->
+                        <field name="matiere_in_note_id" widget="selection" />
+                        <field name="valeur" />
+                        <!-- <field name="duration"/> -->
+                        <!-- <field name="seats"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_note_save">
+        <field name="name">notes</field>
+        <field name="res_model">daniel_school.note</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Creer La Premiere note
+            </p>
+        </field>
+    </record>
+  <!-- base menu item  -->
+  <!-- <menuitem id="base_menu" name="Daniel_School"/> -->
+  <!-- Menu item to open etudiants list -->
+  <menuitem id="menu_note_haut"
+    name="Gestion note"
+    parent="base_menu"/>
+
+    <menuitem id="menu_note"
+      name="note"
+      parent="menu_note_haut"
+      sequence="20"
+      action="action_note_save" />
+  </data>
+</openerp>

@@ -17,6 +17,7 @@
                         <field name="image" widget="image"/>
                         <field name="nom"/>
                         <field name="prenoms"/>
+                        <field  name="sexe"/>
                         <field name="filiere_id"/>
                         <!-- <field name="duration"/> -->
                         <!-- <field name="seats"/> -->

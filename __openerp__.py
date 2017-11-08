@@ -9,6 +9,7 @@
     'views/etudiantview.xml',
     'views/filiereview.xml',
     'views/profview.xml',
-    'views/matiereview.xml'
+    'views/matiereview.xml',
+    'views/noteview.xml'
     ],
 }
