@@ -22,10 +22,13 @@
                     <group>
                         <field name="nom"/>
                         <!-- <field name="description"/> -->
-                        <field name="filiere_in_note_id" />
-                        <field name="etudiant_in_note_id" domain="[('etudiant_in_note_id.filiere_id', '=', filiere_in_note_id)]"/>
+                        <!-- <field name="filiere_in_note_id" /> -->
+                        <!-- filiere_in_note_id -->
+                        <!-- <field name="etudiant_in_note_id" domain="[('etudiant_in_note_id.filiere_id', '=', filiere_in_note_id)]"/> -->
                         <!-- <field name="select_etudiant_in_filiere" domain="[('etudiant_in_note_id', '=', filiere_in_note_id)]" /> -->
+                        <field name="filiere_in_note_id" on_change="onchange_filiere(filiere_in_note_id)"/>
                         <field name="matiere_in_note_id" widget="selection" />
+                        <field name="etudiant_in_note_id" widget="selection"/>
                         <field name="valeur" />
                         <!-- <field name="duration"/> -->
                         <!-- <field name="seats"/> -->
