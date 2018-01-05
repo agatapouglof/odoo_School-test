@@ -20,8 +20,6 @@
                         <field name="prenoms"/>
                         <field  name="sexe"/>
                         <field name="filiere_id" options="{'no_create_edit': True}"/>
-                        <!-- <field name="duration"/> -->
-                        <!-- <field name="seats"/> -->
                     </group>
                 </sheet>
             </form>
@@ -81,6 +79,9 @@
                                <li><field name="prenoms"/></li>
                              </ul>
                         </div>
+                        <div style="margin-left:400px;">
+                          les etats des lieux
+                        </div>
                     </div>
                 </t>
             </templates>
@@ -96,7 +97,6 @@
     <field name="view_id" ref="kanbanid"/>
 </record>
 
-<menuitem id="kanban_menu" name="kanban view" parent="menu_etudiant" action="kanban_etudiant_action"/>
   <!--  end test kanban view -->
 
   <!-- <menuitem action="action_for_gender_graph" id="menu_gender_graph_id"
@@ -109,6 +109,8 @@
   <menuitem id="menu_etudiant"
     name="Gestion Etudiant"
     parent="base_menu"/>
+
+    <menuitem id="kanban_menu" name="kanban view" parent="menu_etudiant" action="kanban_etudiant_action"/>
 
     <menuitem id="menu_todo_task"
       name="Etudiant"

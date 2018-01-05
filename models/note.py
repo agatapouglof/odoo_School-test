@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields ,api
-
+import logging
+_logger = logging.getLogger(__name__)
 class Note(models.Model):
     _name = 'daniel_school.note'
     _rec_name = 'nom'
@@ -16,21 +17,9 @@ class Note(models.Model):
     # filiere_in_matiere_id = fields.Many2many('daniel_school.filiere', ondelete='set null', string="Fielere", index=True)
 
 
-        #  return {'values':{'etudiant_in_note_id':students}}
-        #   Obj = self.env['daniel_school.etudiant'].browse(1)
-        #   get_etudiant = Obj
-        #   self.etudiant_in_note_id = get_etudiant
-    #   return {'values':{'etudiant_in_note_id':'','matiere_in_note_id':''}}
-
-    # @api.depends('filiere_in_note_id')
-    # def select_etudiant(self):
-    #     for record in self:
-    #         if record.filiere_in_note_id
-    #         record.total = record.value + record.value * record.tax
-
     # test onchange ------
-    # @api.onchange('filiere_in_note_id') # if these fields are changed, call method
     # @api.depends('filiere_in_note_id')
+    @api.onchange('filiere_in_note_id') # if these fields are changed, call method
     def onchange_filiere(self, cr, uid, ids, filiere_in_note_id, context=None):
 
         print "on change"
@@ -43,18 +32,26 @@ class Note(models.Model):
             fil = cr.dictfetchall()  #  execute and fetch sql query
             print fil
             students_ids = self.pool.get('daniel_school.etudiant').search(cr,uid,[('filiere_id' , '=' , filiere_in_note_id)]) # query with the orm
+            matieres_ids = self.pool.get('daniel_school.matiere').search(cr,uid,[])
+            matiere = self.pool.get('daniel_school.matiere').browse(cr,uid,matieres_ids)
+            _logger.warning(matiere)
+            students_values = self.pool.get('daniel_school.etudiant').browse(cr,uid,students_ids)
+
+            _logger.critical('info sur les etudiants')
+            _logger.info(students_values[0].filiere_id.matiere_in_filiere_id)
+            # matieres_of_student = students_values[0].filiere_id.matiere_in_filiere_id[0].id
+            matieres_of_student_ids = students_values[0].filiere_id.matiere_in_filiere_id.mapped('id')
+            _logger.warning(matieres_of_student_ids)
             # matieres_ids = self.pool.get('daniel_school.matiere').search(cr,uid,[('filiere_id' , '=' , filiere_in_note_id)])
             # print matieres_ids
             if students_ids:
                 print students_ids
                 res = {
-                'domain' : {'etudiant_in_note_id' : [('id' , 'in' , students_ids)] },
-                'value': {'etudiant_in_note_id' : students_ids[0]}
+                'domain' : {'etudiant_in_note_id' : [('id' , 'in' , students_ids)] , 'matiere_in_note_id' : [('id' , 'in' , matieres_of_student_ids)] },
+                'value': {'etudiant_in_note_id' : students_ids[0],'matiere_in_note_id' : matieres_of_student_ids[0]}
                  }
             else :
                 res = {}
 
-        #     res = {'value': {'nom' : fil[0]['nom']}}
-        #
         return res
     #----- end test onchange
